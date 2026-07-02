@@ -8,7 +8,7 @@ on:
 
 env:
   IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/nodejs-cicd-app
-  MANIFEST_REPO: <YOUR-MANIFEST-REPOSITORY-URL>  
+  MANIFEST_REPO: https://github.com/rifatbond007/manifests-repo.git
   DEPLOYMENT_FILE: k8s-manifests/deployment.yml  
 
 jobs:
@@ -35,7 +35,7 @@ jobs:
       - name: Checkout Kubernetes Manifest Repository
         uses: actions/checkout@v4
         with:
-          repository: <GITHUB-USERNAME>/<MANIFEST-REPOSITORY-NAME> 
+          repository: rifatbond007/manifests-repo
           token: ${{ secrets.K8S_MANIFEST_PAT }}
 
       - name: Update Deployment Manifest
