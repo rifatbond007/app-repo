@@ -41,7 +41,7 @@ jobs:
       - name: Update Deployment Manifest
         run: |
           echo "Updating deployment with version: $VERSION"
-          sed -i "s|image: $IMAGE_NAME:.*|image: $IMAGE_NAME:$VERSION|g" $DEPLOYMENT_FILE
+          sed -i "s|\(image: \).*/nodejs-cicd-app:.*|\1$IMAGE_NAME:$VERSION|g" $DEPLOYMENT_FILE
           
           # Verify the change was made
           grep -n "image: $IMAGE_NAME" $DEPLOYMENT_FILE
